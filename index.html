@@ -1,0 +1,76 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>U-Haul Test</title>
+    <meta name="description" content="U-Haul Test">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="~\..\css\styles.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div id="user-list">
+            <div class="users click" v-if="activeUser === null" v-for="user in users"  @click="getUser(user)">
+                <span class="user-fullname">{{ user.name }}</span>
+                <address class="user-address">
+                    <span>{{ user.address.street }}<br></span>
+                    <span>{{ user.address.suite }}<br></span>
+                    <span>{{ user.address.city }}<br></span>
+                    <span>{{ user.address.zipcode }}<br></span>
+                    <span>{{ user.address.geo.lat }}, {{ user.address.geo.lng }}</span>
+                </address>
+            </div>
+        </div>
+        <div id="active-user" v-if="activeUser">
+            <span class="user-fullname">{{ activeUser.name }}</span>
+            <div id="active-user-action-bar">
+                <button class="btn btn-left" @click="openPostMode(1)"><i class="fas fa-plus-square"></i> New Post</button>
+                <button class="btn btn-right" @click="clearActiveUser"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
+                <button class="btn btn-right" @click="sortPosts(1)">Sort <i class="fas fa-sort-alpha-up"></i></button>
+                <button class="btn btn-right" @click="sortPosts(0)">Sort <i class="fas fa-sort-alpha-down"></i></button>
+                <div class="btn-clear"></div>
+            </div>
+            <div id="active-user-posts">
+                <div class="single-post" v-for="post in activeUser.posts">
+                    <button class="btn post-action" @click="deletePost(post)"><i class="fas fa-trash-alt"></i></button>
+                    <button class="btn post-action" @click="openPostMode(2, post)"><i class="fas fa-edit"></i></button>
+                    <h2>{{ post.title }}</h2>
+
+                    <p>{{ post.body }}</p>
+                </div>
+            </div>
+        </div>
+        <div id="post-form-container" v-if="editMode.id !== 0">
+            <div class="backround-overlay" @click="closePostMode"></div>
+            <div class="post-form">
+                <form>
+                    <div class="form-name">
+                        <span>{{ editMode.type }} Post</span>
+                    </div>
+                    <div><label>Title</label><input type="text" v-model="activePost.title"></div>
+                    <div><label>Post</label><textarea rows="10" cols="50" v-model="activePost.body"></textarea></div>
+
+                    <button type="button" class="btn" v-if="editMode.id === 1" @click="createPost()">Create Post</button>
+                    <button type="button" class="btn" v-if="editMode.id === 2" @click="editPost()">Edit Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
+    <script src="~\..\scripts\app.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

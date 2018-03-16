@@ -1,0 +1,146 @@
+[v-cloak] {
+    display: none;
+  }
+
+html, body{
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+}
+
+body{
+    width: 800px;
+    padding: 20px 50px;
+}
+
+.click{
+    cursor: pointer;
+}
+
+.users {
+    display: inline-block;
+    width: 300px;
+    margin: 0px 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.users:hover{
+    background-color:  #BBF5FF;
+}
+
+.users .user-fullname{
+    width: 300px;
+}
+
+.user-address{
+    margin: 10px 0 10px 50px;
+}
+
+.user-fullname{    
+    font-weight: bold;
+    font-size: 2rem;
+    text-transform: uppercase;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.backround-overlay{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.33);
+    top: 0;
+    left: 0;
+}
+
+.post-form{
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFFFFF;
+    padding: 20px;
+    height: 400px;
+    max-width: 500px;
+}
+
+.post-form label{
+    display: block;
+}
+
+.post-form input, .post-form textarea{
+    width: 100%;
+    min-height: 25px;
+    border-radius: 5px;
+    border: 1px solid #c7c7c7;
+    margin: 10px 0;
+}
+
+#active-user-action-bar{
+    padding: 10px;
+}
+
+#active-user-posts{
+    width: 768px;
+}
+
+.single-post{
+    padding: 20px;
+}
+
+.single-post:nth-child(even){
+    background-color: #f9f9f9;
+}
+
+.single-post:hover{
+    background-color: #c1c1c1;
+}
+
+.post-action{
+    float: right;
+}
+
+.btn{
+    background-color: #e6e6e6;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.btn-left{
+    float: left;
+}
+
+.btn-right{
+    float: right;
+}
+
+.btn-clear{
+    clear: both;
+}
+
+.btn:hover{
+    background-color: #80EAFD;
+}
+
+.form-name{
+    border-bottom: solid 3px black;
+    margin-bottom: 10px;
+}
+
+.form-name span{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
